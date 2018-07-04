@@ -1,0 +1,12 @@
+<h1><%= @building.name %></h1>
+<br>
+We are located at: <%= @building.address %>, <%= @building.country %>.
+<br>
+We have <%= @building.number_of_floors %>floors, and the rent per floor is £<%= @building.rent_per_floor %>.
+<br>
+The companies which currently live in this building are:
+<ul>
+    <% @companies.each do |company| %>
+        <li><%= link_to company.name, company %></li>
+    <% end %>
+</ul>

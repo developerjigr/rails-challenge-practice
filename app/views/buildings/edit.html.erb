@@ -1,0 +1,21 @@
+<%= form_for @building do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<br></br>
+<%= f.label :country %>
+<%= f.text_field :country %>
+<br></br>
+<%= f.label :address %>
+<%= f.text_field :address %>
+<br></br>
+<%= f.label :rent_per_floor %>
+<%= f.text_field :rent_per_floor %>
+<br></br>
+<%= f.label :number_of_floors %>
+<%= f.text_field :number_of_floors %>
+<br></br>
+<%= f.label :companies %>
+<%= f.collection_check_boxes :company_ids, @companies, :id, :name %>
+<br></br>
+<%= f.submit %>
+<% end %>

@@ -11,10 +11,18 @@ class BuildingsController < ApplicationController
 
 
     def edit
+        @companies = Company.all
     end
 
 
     def update
+        @building.update(building_params)
+        if @building.valid?
+            redirect_to @building
+        else
+            flash[:errors] = @building.errors.full_messages
+            redirect_to edit_building_path
+        end
     end
 
     # def destroy
@@ -23,11 +31,15 @@ class BuildingsController < ApplicationController
 
     private
 
+    def building_params
+        params.require(:building).permit(:name, :country, :address, :rent_per_floor, :number_of_floors, company_ids:[])
+    end
+
     def set_building
         @building = Building.find(params[:id])
     end
 
     def set_companies
-        @companies = @building.companies
+        @building_companies = @building.companies
     end
 end
